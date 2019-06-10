@@ -1,6 +1,7 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 ;; Place your private configuration here
 
+;; user defined functions
 (defun newline-below ()
     (interactive)
     (let ((oldpos (point)))
@@ -19,6 +20,10 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
+;; hooks
+(after! anaconda-mode
+  (set-company-backend! 'anaconda-mode '(company-anaconda company-yasnippet)))
 
 ;; keybindings
 (map! :n "C-c m" #'counsel-rhythmbox
