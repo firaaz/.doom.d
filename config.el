@@ -1,21 +1,19 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 ;; Place your private configuration here
 
+(require 'company)
 ;; user defined functions
 (defun newline-below ()
-    (interactive)
-    (let ((oldpos (point)))
-        (end-of-line)
-        (newline)))
+  (interactive)
+  (let ((oldpos (point)))
+    (end-of-line)
+    (newline)))
 
 (defun newline-above ()
-    (interactive)
-    (let ((oldpos (point)))
-        (beginning-of-line)
-        (newline)))
-
-(require 'company)
-(setq doom-theme 'doom-challenger-deep)
+  (interactive)
+  (let ((oldpos (point)))
+    (beginning-of-line)
+    (newline)))
 
 (setq which-key-idle-delay 0.5)
 (setq company-idle-delay 0.2
@@ -33,7 +31,13 @@
   (set-company-backend! 'anaconda-mode '(company-anaconda company-yasnippet)))
 
 ;; keybindings
-(map! :n "C-c m" #'counsel-rhythmbox
+(map! :nvi "C-c m" #'counsel-rhythmbox
       :nv "] SPC" #'newline-below
       :nv "[ SPC" #'newline-above
-      :ni "C-h" #'evil-window-left)
+      :ni "C-h" #'evil-window-left
+      :ni "C-j" #'evil-window-down
+      :ni "C-k" #'evil-window-up
+      :ni "C-l" #'evil-window-right)
+
+(provide 'config)
+;;; config.el ends here
