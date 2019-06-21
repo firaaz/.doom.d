@@ -23,19 +23,23 @@
   (set-company-backend! 'anaconda-mode '(company-anaconda company-yasnippet)))
 
 ;; keybindings
-(map! :nvi "C-c m" #'counsel-rhythmbox
-      :nvi "C-c w" #'olivetti-mode
-      :nv "] SPC" #'newline-below
-      :nv "[ SPC" #'newline-above
-      :ni "C-h" #'evil-window-left
+(map! :prefix "SPC"
+      :n "o m" #'counsel-rhythmbox
+      :n "o w" #'olivetti-mode)
+
+;;; movement keybindings
+(map! :ni "C-h" #'evil-window-left
       :ni "C-j" #'evil-window-down
       :ni "C-k" #'evil-window-up
-      :ni "C-l" #'evil-window-right)
+      :ni "C-l" #'evil-window-right
+      :nv "] SPC" #'newline-below
+      :nv "[ SPC" #'newline-above)
 
 ;; settings
-(setq exec-path (append exec-path '("/home/firaaz/anaconda3/bin")))
-(setenv "PATH" (concat (getenv "PATH") ":/home/firaaz/anaconda3/bin"))
-;; UTF-8 support for terminal sessions
+(setenv "PATH" (concat (getenv "PATH") (concat ":" (getenv "HOME") "/anaconda3/bin")))
+(setq exec-path (append exec-path (concat (getenv "HOME") "/anaconda3/bin")))
+
+;;; UTF-8 support for terminal sessions
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
