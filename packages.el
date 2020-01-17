@@ -6,8 +6,4 @@
 ;; (package! another-package :recipe (:host github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 
-(package! writeroom-mode)
 (package! helm-spotify-plus)
-(package! evil-matchit)
-(package! beacon)
-(package! aggressive-indent)
