@@ -7,3 +7,5 @@
 ;; (package! builtin-package :disable t)
 
 (package! helm-spotify-plus)
+(package! heaven-and-hell)
+(package! emacs-surround)
